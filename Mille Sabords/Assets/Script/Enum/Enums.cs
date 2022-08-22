@@ -1,0 +1,1 @@
+public enum DiceFace { Skull, Coin, Diamond, Swords, Perroquet, Monkey };
