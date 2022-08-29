@@ -4,32 +4,43 @@ using UnityEngine;
 
 public class DiceManagerSkulls : MonoBehaviour
 {
-
     int skullNumber;
+    int corsairDices = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public void CheckSkulls()
     {
-        
-    }
+        Debug.Log("aa");
+        Debug.Log(DiceManager.instance.GetIsFirstRoll());
+        Debug.Log(skullNumber);
+        if (DiceManager.instance.GetIsFirstRoll() && skullNumber >= 4)
+        {
+            Debug.Log("bb");
+            DiceManager.instance.SetIsFirstRoll(true);
+            if (corsairDices == 0 || skullNumber > corsairDices)
+            {
+                Debug.Log("cc");
+                corsairDices = skullNumber;
+            }else
+            {
+                Debug.Log("dd");
+                GameManager.instance.gameM_Turn.RoundOver();
+                ScoreManager.instance.ResetScore();
+            }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        if (DiceManager.instance.diceM_Roll.GetIsRolling()) return;
+        if (corsairDices != 0) return;
+
         if (skullNumber >= 3)
         {
-            GameManager.instance.RoundOver();
+            GameManager.instance.gameM_Turn.RoundOver();
             ScoreManager.instance.ResetScore();
         }
     }
 
-    public void AddSkullNumber()
-    {
-        skullNumber++;
-    }
+    public int GetCorsairDices()            { return corsairDices; }
+    public void SetCorsairDices(int value)  { corsairDices = value; }
 
-    public void ResetSkullNumber()
-    {
-        skullNumber = 0;
-    }
+    public void AddSkullNumber()   { skullNumber++; }
+    public void ResetSkullNumber() { skullNumber = 0; }
 }

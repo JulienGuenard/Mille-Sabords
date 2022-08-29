@@ -34,7 +34,7 @@ public class Dice : MonoBehaviour
             if (diceFace == DiceFace.Skull)
             {
                 UnselectDice();
-                DiceManager.instance.NewSkullDice();
+                DiceManager.instance.diceM_Skulls.AddSkullNumber();
             }
             MakeStatic(true);
         }
@@ -96,7 +96,7 @@ public class Dice : MonoBehaviour
     public void UnselectDice()
     {
         isSelected = false;
-        DiceManager.instance.UnselectDice(this);
+        DiceManager.instance.diceM_Select.UnselectDice(this);
 
         if (diceFace != DiceFace.Skull) return;
 
@@ -105,14 +105,14 @@ public class Dice : MonoBehaviour
 
     void ClickDice()
     {
-        DiceManager.instance.SelectDice(this);
+        DiceManager.instance.diceM_Select.SelectDice(this);
     }
 
     void GiveDiceFace()
     {
         isRolling = false;
         isFirstRoll = false;
-        DiceManager.instance.AddToFaceList(diceFace);
+        DiceManager.instance.diceM_Lists.AddToFaceList(diceFace);
     }
 
     private void OnMouseOver()

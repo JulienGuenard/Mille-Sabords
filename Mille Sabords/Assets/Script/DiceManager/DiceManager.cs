@@ -1,161 +1,71 @@
-    using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using TMPro;
 
 public class DiceManager : MonoBehaviour
 {
-    public Vector3 diceRollForce;
-    public List<Dice> diceList;
-    List<DiceFace> resultDiceFaceList = new List<DiceFace>();
-
-    public List<Dice> selectedDiceList = new List<Dice>();
-
-    bool isRolling = false;
-
     static public DiceManager instance;
 
-    DiceManagerSkulls diceManagerSkulls;
+    [HideInInspector] public DiceManagerSkulls  diceM_Skulls;
+    [HideInInspector] public DiceManagerRoll    diceM_Roll;
+    [HideInInspector] public DiceManagerLists   diceM_Lists;
+    [HideInInspector] public DiceManagerThrow   diceM_Throw;
+    [HideInInspector] public DiceManagerSelect  diceM_Select;
+
+    bool isFirstRoll = true;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
+        if (instance == null) { instance = this; }
 
-        diceManagerSkulls = GetComponent<DiceManagerSkulls>();
+        diceM_Skulls     = GetComponent<DiceManagerSkulls>();
+        diceM_Roll       = GetComponent<DiceManagerRoll>();
+        diceM_Lists      = GetComponent<DiceManagerLists>();
+        diceM_Throw      = GetComponent<DiceManagerThrow>();
+        diceM_Select     = GetComponent<DiceManagerSelect>();
     }
 
     private void Start()
     {
-        SelectAllDices();
+        diceM_Select.SelectAllDices();
     }
 
     void Update()
     {
-        if (isRolling && resultDiceFaceList.Count == 8)
-        {
-            RollEnd();
-        }
+        CheckAllDicesRolling();
     }
 
     public void ButtonRoll()
     {
-        if (!CheckRoll()) return;
-        Debug.Log("aaa");
-        RollBegin();
-        ThrowDices();
-    }
+        if (diceM_Roll.GetIsRolling()) return;
 
-    public void SelectDice(Dice d)
-    {
-        if (d.GetDiceFace() == DiceFace.Skull) return;
-
-        d.SelectDice();
-        if (selectedDiceList.Contains(d))
-        {
-            selectedDiceList.Remove(d);
-            return;
-        }
-        selectedDiceList.Add(d);
-    }
-
-    public void UnselectDice(Dice d)
-    {
-        if (selectedDiceList.Contains(d))
-        {
-            selectedDiceList.Remove(d);
-            return;
-        }
+        diceM_Roll.RollBegin();
+        diceM_Lists.ClearFaceList();
+        UIManager.instance.BeginPhase_ActiveUI();
+        ScoreManager.instance.ResetScore();
+        diceM_Throw.ThrowDices();
     }
 
     public void ResetDices()
     {
-        foreach(Dice d in diceList)
+        foreach(Dice d in diceM_Lists.GetDiceList())
         {
             d.ChangeDiceFace(DiceFace.Perroquet);
             d.SetFirstRoll();
         }
-        SelectAllDices();
-        diceManagerSkulls.ResetSkullNumber();
-        isRolling = false;
+
+        isFirstRoll = true;
+        diceM_Select.SelectAllDices();
+        diceM_Skulls.ResetSkullNumber();
+        diceM_Roll.SetIsRolling(false);
     }
 
-    public void AddToFaceList(DiceFace d)
-    {
-        resultDiceFaceList.Add(d);
-    }
+    public bool GetIsFirstRoll() { return isFirstRoll; }
+    public void SetIsFirstRoll(bool state) { isFirstRoll = state; }
 
-    public void NewSkullDice()
+    void CheckAllDicesRolling()
     {
-        diceManagerSkulls.AddSkullNumber();
-    }
-
-    public List<DiceFace> GetResultDiceFaceList()
-    {
-        return resultDiceFaceList;
-    }
-
-    bool CheckRoll()
-    {
-        if (selectedDiceList.Count <= 1) return false;
-        return true;
-    }
-
-    void RollBegin()
-    {
-        isRolling = true;
-        ClearFaceList();
-        GameManager.instance.BeginPhase();
-    }
-
-    void RollEnd()
-    {
-        isRolling = false;
-        GameManager.instance.EndPhase();
-    }
-
-    void ThrowDices()
-    {
-        foreach (Dice d in diceList)
+        if (diceM_Roll.GetIsRolling() && diceM_Lists.GetResultDiceFaceList().Count == 8)
         {
-            if (selectedDiceList.Contains(d))
-            {
-                d.MakeStatic(false);
-                Vector3 force = diceRollForce;
-                force.x *= Random.Range(0.5f, 2f);
-                force.y *= Random.Range(0.5f, 2f);
-                force.z *= Random.Range(0.5f, 2f);
-                d.Roll(force);
-            }else
-            {
-                d.MakeStatic(true);
-            }
-        }
-    }
-
-    void ClearFaceList()
-    {
-        resultDiceFaceList.Clear();
-        foreach (Dice d in diceList)
-        {
-            if (!selectedDiceList.Contains(d))
-            {
-                resultDiceFaceList.Add(d.GetDiceFace());
-            }
-        }
-    }
-
-    void SelectAllDices()
-    {
-
-        foreach (Dice d in diceList)
-        {
-            UnselectDice(d);
-            SelectDice(d);
+            diceM_Roll.RollEnd();
         }
     }
 }
