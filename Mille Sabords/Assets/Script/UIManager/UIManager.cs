@@ -1,25 +1,20 @@
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : UIManagerHeritage
 {
     static public UIManager instance;
 
-    [HideInInspector] public UIManager_Buttons      uiM_Buttons;
-    [HideInInspector] public UIManager_Feedbacks    uiM_Feedbacks;
-
     bool isDisabled = false;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         if (instance == null) { instance = this; }
-
-        uiM_Buttons     = GetComponent<UIManager_Buttons>();
-        uiM_Feedbacks   = GetComponent<UIManager_Feedbacks>();
     }
 
     public void OnPressButtonRoll()
     {
-        DiceManager.instance.ButtonRoll();
+        DiceManager.instance.Roll();
     }
 
     public void OnPressButtonKeep()
@@ -29,13 +24,13 @@ public class UIManager : MonoBehaviour
         uiM_Buttons.EnableButton(uiM_Buttons.btnRoll_Image, uiM_Buttons.btnRoll_Button);
     }
 
-    public void BeginPhase_ActiveUI()
+    public void DesactiveUI()
     {
         uiM_Buttons.DisableButton(uiM_Buttons.btnRoll_Image, uiM_Buttons.btnRoll_Button);
         uiM_Buttons.DisableButton(uiM_Buttons.btnKeep_Image, uiM_Buttons.btnKeep_Button);
     }
 
-    public void EndPhase_DesactiveUI()
+    public void ActiveUI()
     {
         if (isDisabled) return;
 

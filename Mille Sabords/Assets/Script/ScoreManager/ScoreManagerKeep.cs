@@ -1,15 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManagerKeep : MonoBehaviour
+public class ScoreManagerKeep : ScoreManagerHeritage
 {
     [HideInInspector] public int score = 0;
     List<int> P1_scoreList = new List<int>();
     List<int> P2_scoreList = new List<int>();
 
+    int playerScored = 1;
+
     public void KeepScore()
     {
-        switch (GameManager.instance.gameM_Player.GetPlayerTurn())
+        playerScored = GameManager.instance.gameM_Player.GetPlayerTurn();
+
+        if (DiceManager.instance.diceM_Skulls.GetCorsairDices() != 0)
+        {
+            playerScored++;
+            if (playerScored > 2) playerScored = 1;
+        }
+
+        Debug.Log(playerScored);
+
+        switch (playerScored)
         {
             case 1:
                 if (P1_scoreList.Count > 0) score += P1_scoreList[P1_scoreList.Count - 1];
@@ -21,18 +33,25 @@ public class ScoreManagerKeep : MonoBehaviour
                 break;
         }
 
-        for (int i = 0; i < P1_scoreList.Count; i++)
+        string newTxt = " ";
+
+        if (playerScored == 1)
         {
-            switch (GameManager.instance.gameM_Player.GetPlayerTurn())
+            for (int i = 0; i < P1_scoreList.Count; i++)
             {
-                case 1:
-                    if (i == 0) ScoreManager.instance.P1_scoreText.text = " ";
-                    ScoreManager.instance.P1_scoreText.text += P1_scoreList[i].ToString() + "\n";
-                    break;
-                case 2:
-                    if (i == 0) ScoreManager.instance.P2_scoreText.text = " ";
-                    ScoreManager.instance.P2_scoreText.text += P2_scoreList[i].ToString() + "\n";
-                    break;
+                if (i == 0) UIManager.instance.uiM_Feedbacks.ChangePlayerScoreText(1, " ");
+                newTxt = UIManager.instance.uiM_Feedbacks.P1_scoreText.text + P1_scoreList[i].ToString() + "\n";
+                UIManager.instance.uiM_Feedbacks.ChangePlayerScoreText(1, newTxt);
+            }
+        }
+
+        if (playerScored == 2)
+        {
+            for (int i = 0; i < P2_scoreList.Count; i++)
+            {
+                        if (i == 0) UIManager.instance.uiM_Feedbacks.ChangePlayerScoreText(2, " ");
+                        newTxt = UIManager.instance.uiM_Feedbacks.P2_scoreText.text + P2_scoreList[i].ToString() + "\n";
+                        UIManager.instance.uiM_Feedbacks.ChangePlayerScoreText(2, newTxt);
             }
         }
 

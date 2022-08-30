@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceManagerLists : MonoBehaviour
+public class DiceManagerLists : DiceManagerHeritage
 {
     public List<Dice> diceList;
     List<Dice> selectedDiceList = new List<Dice>();
     List<DiceFace> resultDiceFaceList = new List<DiceFace>();
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
-
-    void Awake()
+    new void Awake()
     {
+        base.Awake();
         diceList.Clear();
         diceList.AddRange(Object.FindObjectsOfType<Dice>());
     }

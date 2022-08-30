@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceManagerThrow : MonoBehaviour
+public class DiceManagerThrow : DiceManagerHeritage
 {
     public Vector3 diceRollForce;
 

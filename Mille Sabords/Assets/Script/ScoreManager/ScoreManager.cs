@@ -1,42 +1,34 @@
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : ScoreManagerHeritage
 {
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI P1_scoreText;
-    public TextMeshProUGUI P2_scoreText;
 
     static public ScoreManager instance;
 
-    [HideInInspector] public ScoreManagerIncrement scoreM_Increment;
-    [HideInInspector] public ScoreManagerKeep scoreM_Keep;
-
-    private void Awake()
+    new void Awake()
     {
+        base.Awake();
         if (instance == null) { instance = this; }
-
-        P1_scoreText.text = " ";
-        P2_scoreText.text = " ";
-
-        scoreM_Increment = GetComponent<ScoreManagerIncrement>();
-        scoreM_Keep = GetComponent<ScoreManagerKeep>();
     }
 
     public void NewScore(List<DiceFace> resultDiceFaceList)
     {
-        scoreM_Increment.NewScoreInit();
-        scoreM_Increment.NewScoreCumulSkulls(DiceManager.instance.diceM_Skulls.GetCorsairDices());
+        scoreM_Increment.SetChestCombo(0);
+        scoreM_Increment.ResetCombo();
 
-        if (DiceManager.instance.diceM_Skulls.GetCorsairDices() == 0)
+        if (DiceManager.instance.diceM_Skulls.GetCorsairDices() > 0)
         {
-            DiceManager.instance.SetIsFirstRoll(false);
-            scoreM_Increment.NewScoreCumulFaces(resultDiceFaceList);
-
+            scoreM_Increment.CorsairCombo(DiceManager.instance.diceM_Skulls.GetCorsairDices());
+            return;
         }
 
-        scoreM_Increment.NewScoreIncrement();
+        if (!DiceManager.instance.diceM_Skulls.CheckSkulls(3))
+        {
+            scoreM_Increment.NewScoreCumulFaces(resultDiceFaceList);
+            scoreM_Increment.NewScoreIncrement();
+        }
     }
 
     public void ResetScore()

@@ -1,14 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManagerIncrement : MonoBehaviour
+public class ScoreManagerIncrement : ScoreManagerHeritage
 {
     List<int> comboList = new List<int>();
-    int chestcombo;
+    int chestCombo;
 
-    public void NewScoreInit()
+    public int GetChestCombo() { return chestCombo; }
+    public void SetChestCombo(int value) { chestCombo = value; }
+    public void AddChestCombo(int value) { chestCombo += value; }
+
+    public void ResetCombo()
     {
-        chestcombo = 0;
 
         comboList = new List<int>();
         for (int i = 0; i < 5; i++)
@@ -17,7 +20,7 @@ public class ScoreManagerIncrement : MonoBehaviour
         }
     }
 
-    public void NewScoreCumulSkulls(int count)
+    public void CorsairCombo(int count)
     {
         ScoreManager.instance.SetScore(-100 * count);
     }
@@ -31,12 +34,12 @@ public class ScoreManagerIncrement : MonoBehaviour
                 case DiceFace.Coin:
                     ScoreManager.instance.AddScore(100);
                     comboList[0]++;
-                    chestcombo++;
+                    AddChestCombo(1);
                     break;
                 case DiceFace.Diamond:
                     ScoreManager.instance.AddScore(100);
                     comboList[1]++;
-                    chestcombo++;
+                    AddChestCombo(1);
                     break;
                 case DiceFace.Swords:
                     comboList[2]++;
@@ -67,10 +70,10 @@ public class ScoreManagerIncrement : MonoBehaviour
 
             if (i >= 2)
             {
-                if (comboList[i] >= 3) chestcombo += comboList[i];
+                if (comboList[i] >= 3) AddChestCombo(comboList[i]);
             }
         }
 
-        if (chestcombo == 8) ScoreManager.instance.AddScore(500);
+        if (GetChestCombo() == 8) ScoreManager.instance.AddScore(500);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceManagerSelect : MonoBehaviour
+public class DiceManagerSelect : DiceManagerHeritage
 {
     public void SelectDice(Dice d)
     {
@@ -19,7 +19,6 @@ public class DiceManagerSelect : MonoBehaviour
 
     public void SelectAllDices()
     {
-
         foreach (Dice d in DiceManager.instance.diceM_Lists.GetDiceList())
         {
             UnselectDice(d);

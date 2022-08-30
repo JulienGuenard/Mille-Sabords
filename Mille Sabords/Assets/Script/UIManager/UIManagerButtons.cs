@@ -2,22 +2,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager_Buttons : MonoBehaviour
+public class UIManagerButtons : UIManagerHeritage
 {
     [Range(0, 1)] public float btn_Transparency;
 
     public GameObject btnRoll;
-    [HideInInspector] public TextMeshProUGUI    btnRoll_Text;
-    [HideInInspector] public Image              btnRoll_Image;
-    [HideInInspector] public Button             btnRoll_Button;
+    [HideInInspector] public TextMeshProUGUI btnRoll_Text;
+    [HideInInspector] public Image btnRoll_Image;
+    [HideInInspector] public Button btnRoll_Button;
 
     public GameObject btnKeep;
-    [HideInInspector] public TextMeshProUGUI    btnKeep_Text;
-    [HideInInspector] public Image              btnKeep_Image;
-    [HideInInspector] public Button             btnKeep_Button;
+    [HideInInspector] public TextMeshProUGUI btnKeep_Text;
+    [HideInInspector] public Image btnKeep_Image;
+    [HideInInspector] public Button btnKeep_Button;
 
-    private void Awake()
+    new void Awake()
     {
+        base.Awake();
+
         btnRoll_Text =      btnRoll.GetComponentInChildren<TextMeshProUGUI>();
         btnRoll_Image =     btnRoll.GetComponent<Image>();
         btnRoll_Button =    btnRoll.GetComponent<Button>();
@@ -32,7 +34,6 @@ public class UIManager_Buttons : MonoBehaviour
 
     public void DisableRoll()
     {
-        Debug.Log("aaa");
         DisableButton(btnRoll_Image, btnRoll_Button);
     }
 
