@@ -18,6 +18,6 @@ public class GameManager : GameManagerHeritage
 
     void ResetGame()
     {
-        SceneManager.LoadScene("main");
+        SceneManager.LoadScene("2P_Game");
     }
 }
