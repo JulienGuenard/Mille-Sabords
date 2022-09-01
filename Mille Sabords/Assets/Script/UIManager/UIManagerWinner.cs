@@ -15,5 +15,8 @@ public class UIManagerWinner : UIManagerHeritage
         if (playerNb == 1) playerString = "<color=#E7003A>player two";
 
         winnerText.text = playerString + "<color=#ffffff> is a winner !";
+
+        uiM_Menu.Return();
+        uiM_Menu.enabled = false;
     }
 }

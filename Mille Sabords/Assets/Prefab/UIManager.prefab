@@ -10,6 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1849376619374207576}
   - component: {fileID: 1849376619374207579}
+  - component: {fileID: 2069539031}
+  - component: {fileID: 2069539032}
+  - component: {fileID: 2069539033}
+  - component: {fileID: 2069539034}
+  - component: {fileID: 2069539035}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -44,7 +49,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c8bd7afc1a40a45b5ef78b12a1c618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiM_Buttons: {fileID: 0}
+  uiM_Feedbacks: {fileID: 0}
+  uiM_Menu: {fileID: 0}
+  uiM_Winner: {fileID: 0}
+--- !u!114 &2069539031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849376619374207578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121b766cbc584c64c92cfa9971c63a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiM_Buttons: {fileID: 0}
+  uiM_Feedbacks: {fileID: 0}
+  uiM_Menu: {fileID: 0}
+  uiM_Winner: {fileID: 0}
+  playerTurnText: {fileID: 0}
+  P1_scoreText: {fileID: 0}
+  P2_scoreText: {fileID: 0}
+--- !u!114 &2069539032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849376619374207578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05277599553d4f949820707ecc385d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiM_Buttons: {fileID: 0}
+  uiM_Feedbacks: {fileID: 0}
+  uiM_Menu: {fileID: 0}
+  uiM_Winner: {fileID: 0}
   btn_Transparency: 0.3
   btnRoll: {fileID: 0}
+  btnRoll_Text: {fileID: 0}
+  btnRoll_Image: {fileID: 0}
+  btnRoll_Button: {fileID: 0}
   btnKeep: {fileID: 0}
-  playerTurnText: {fileID: 0}
+  btnKeep_Text: {fileID: 0}
+  btnKeep_Image: {fileID: 0}
+  btnKeep_Button: {fileID: 0}
+--- !u!114 &2069539033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849376619374207578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee73da4a69833b34189b45ad6df8da8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiM_Buttons: {fileID: 0}
+  uiM_Feedbacks: {fileID: 0}
+  uiM_Menu: {fileID: 0}
+  uiM_Winner: {fileID: 0}
+--- !u!114 &2069539034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849376619374207578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47efdee696f252438adf088d1562fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiM_Buttons: {fileID: 0}
+  uiM_Feedbacks: {fileID: 0}
+  uiM_Menu: {fileID: 0}
+  uiM_Winner: {fileID: 0}
+  canvasWinner: {fileID: 0}
+  winnerText: {fileID: 0}
+--- !u!114 &2069539035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849376619374207578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aed94442e05dfc46bdb2655ed8eb09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiM_Buttons: {fileID: 0}
+  uiM_Feedbacks: {fileID: 0}
+  uiM_Menu: {fileID: 0}
+  uiM_Winner: {fileID: 0}
+  CanvasMenu: {fileID: 0}

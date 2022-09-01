@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 5465457235129340127}
   - component: {fileID: 5465457235129339939}
   - component: {fileID: 5465457235129339938}
+  - component: {fileID: 516192130}
+  - component: {fileID: 516192131}
+  - component: {fileID: 516192132}
   m_Layer: 0
   m_Name: DiceManager
   m_TagString: Untagged
@@ -47,8 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d501833976c00459bde212646358bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceRollForce: {x: 1000, y: 500, z: 1000}
+  diceM_Skulls: {fileID: 0}
+  diceM_Roll: {fileID: 0}
   diceM_Lists: {fileID: 0}
+  diceM_Throw: {fileID: 0}
+  diceM_Select: {fileID: 0}
 --- !u!114 &5465457235129340127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5e05e06899809499b07d055d66aa24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceM_Skulls: {fileID: 0}
+  diceM_Roll: {fileID: 0}
+  diceM_Lists: {fileID: 0}
+  diceM_Throw: {fileID: 0}
+  diceM_Select: {fileID: 0}
 --- !u!114 &5465457235129339939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a7ea30e64a7064192e786cb1ff4cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceM_Skulls: {fileID: 0}
+  diceM_Roll: {fileID: 0}
+  diceM_Lists: {fileID: 0}
+  diceM_Throw: {fileID: 0}
+  diceM_Select: {fileID: 0}
 --- !u!114 &5465457235129339938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128327d3869c2b440be09a496e8be0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceM_Skulls: {fileID: 0}
+  diceM_Roll: {fileID: 0}
+  diceM_Lists: {fileID: 0}
+  diceM_Throw: {fileID: 0}
+  diceM_Select: {fileID: 0}
   diceList:
   - {fileID: 0}
   - {fileID: 0}
@@ -94,4 +115,55 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  selectedDiceList: []
+--- !u!114 &516192130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465457235129340126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9096b7e97e0029469f7917335015449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceM_Skulls: {fileID: 0}
+  diceM_Roll: {fileID: 0}
+  diceM_Lists: {fileID: 0}
+  diceM_Throw: {fileID: 0}
+  diceM_Select: {fileID: 0}
+  diceRollForce: {x: 200, y: 750, z: 200}
+--- !u!114 &516192131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465457235129340126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02842901b680f474d9af65210afde306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceM_Skulls: {fileID: 0}
+  diceM_Roll: {fileID: 0}
+  diceM_Lists: {fileID: 0}
+  diceM_Throw: {fileID: 0}
+  diceM_Select: {fileID: 0}
+--- !u!114 &516192132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465457235129340126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a73426e9bc17a6e4a807bc049f04a0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceM_Skulls: {fileID: 0}
+  diceM_Roll: {fileID: 0}
+  diceM_Lists: {fileID: 0}
+  diceM_Throw: {fileID: 0}
+  diceM_Select: {fileID: 0}

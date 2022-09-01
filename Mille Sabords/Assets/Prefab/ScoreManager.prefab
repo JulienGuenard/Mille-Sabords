@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2300326191530628538}
   - component: {fileID: 2300326191530628539}
+  - component: {fileID: 294079235}
+  - component: {fileID: 294079236}
+  - component: {fileID: 294079238}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -44,6 +47,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f426d80a7cb434598f9c15344efde1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreM_Increment: {fileID: 0}
+  scoreM_Keep: {fileID: 0}
   scoreText: {fileID: 0}
-  P1_scoreText: {fileID: 0}
-  P2_scoreText: {fileID: 0}
+--- !u!114 &294079235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2300326191530628532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf72c61dfaa51a4889ea5a6b5c95e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreM_Increment: {fileID: 0}
+  scoreM_Keep: {fileID: 0}
+  score: 0
+--- !u!114 &294079236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2300326191530628532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc756f5042133914f9196b723ea8ba59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreM_Increment: {fileID: 0}
+  scoreM_Keep: {fileID: 0}
+--- !u!114 &294079238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2300326191530628532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e7f4f55ed6c274287f92bceefdd39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreM_Increment: {fileID: 0}
+  scoreM_Keep: {fileID: 0}
